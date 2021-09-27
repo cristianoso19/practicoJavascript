@@ -1,0 +1,136 @@
+:root {
+   --bg-color: #161d31;
+   --bg-card-color: #283046;
+   --font-primary-color: #d0d2d6;
+   --font-secondary-color: #b4b7bd;
+   --primary-color: #7367f0;
+   --secondary-color: #ea5455;
+   --primary: #7367f0;
+   --info: #00cfe8;
+   --danger: #ea5455;
+   --success: #28c76f;
+   --warning: #ff9f43;
+   --badge-primary: #7367f030;
+   --badge-info: #00cfe830;
+   --badge-danger: #ea545530;
+   --badge-success: #28c76f30;
+   --header-size: 4rem;
+   --font-icons: 2.4rem;
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   font-size: 62.5%;
+   background-color: var(--bg-color);
+   font-family: "Montserrat", sans-serif, Helvetica;
+   color: var(--font-secondary-color);
+}
+
+header nav {
+   font-size: var(--font-icons);
+   display: flex;
+   flex-wrap:  wrap;
+   justify-content: space-between;
+   background-color: var(--bg-card-color);
+   margin: 1.8rem 1.8rem;
+   padding: 1.5rem 1.5rem;
+   border-radius: 0.7rem;
+}
+
+header nav span {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   color: var(--primary-color);
+}
+
+header nav h4 {
+   display: inline;
+}
+
+header nav ul {
+   width: 40vw;
+   display: flex;
+   justify-content: space-between;
+}
+ul li {
+   list-style-type: none; 
+}
+.container {
+   margin: 1.8rem 1.8rem;
+}
+.card {
+   margin-top: 1.8rem;
+   padding: 1.5rem 1.5rem;
+   border-radius: 0.7rem;
+   background-color: var(--bg-card-color);
+}
+.primary{
+   color: var(--primary);
+}
+.info{ 
+   color: var(--info);
+}
+.danger{
+   color: var(--danger);
+}
+.success{
+   color: var(--success);
+}
+.warning{
+   color: var(--warning);
+}
+.card-header {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   font-size: 1.8rem;
+   font-weight: 600;
+}
+.card-header i{
+   font-size: var(--font-icons);
+}
+button {
+   margin-top:1rem; 
+   background: var(--primary-color);
+   height: 3.3rem;
+   border: 0px solid transparent;
+   border-radius: 0.6rem;
+   color: var(--font-primary-color);
+}
+form {
+   display: flex;
+   flex-direction: column;
+}
+label {
+   margin-top: 0.8rem;
+   font-size: 1.4rem;
+}
+input:hover {
+   border: 2px solid var(--primary-color);
+}
+input:focus {
+   border: 3px solid var(--primary-color);
+}
+input {
+   color: var(--font-primary-color);
+   margin-top: 0.5rem;
+   height: 3rem;
+   border: 2px solid var(--font-primary-color);
+   border-radius: 0.6rem;
+   background: transparent;
+   outline: none;
+}
+
+.results{
+   margin-top: 1.8rem;
+} 
+.results h3{
+   font-weight: 600;
+   font-size: 1.6rem;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Figuras geometricas | Curso JS practico de Platzi</title>
+   <link rel="stylesheet" href="./style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;900&display=swap" rel="stylesheet">
+   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+   <header>
+      <nav>
+         <span>
+            <h4 class="logo-title">Free</h4>
+            <i class='bx bx-calculator'></i>
+         </span>
+         <ul>
+            <li><i class='bx bx-help-circle'></i></li>
+            <li><i class='bx bxl-instagram'></i></li>
+            <li><i class='bx bxl-facebook'></i></li>
+            <li><i class='bx bxl-twitter'></i></li>
+         </ul>
+      </nav>
+   </header>
+   <main class="container">
+      <section class="card">
+         <div class="card-header danger">
+            <i class='bx bx-square'></i>
+            <p class="card-header-title">Cuadrado</p>
+         </div>
+         <form action="#" method="post" accept-charset="utf-8">
+            <label for="ladocuadrado">Ingresa un lado</label>
+            <input type="number" name="ladocuadrado" id="ladocuadrado" value="" required />
+            <button type="button" onclick="calcularCuadrado()">Calcular</button>
+         </form>
+         <div class="results">
+            <h3>Perímetro: <span id="perimetroCuadrado" class="results-value"></span></h3>
+            <h3>Area: <span id="areaCuadrado" class="results-value"></span></h3>
+         </div>
+      </section>
+      <section class="card">
+         <div class="card-header warning">
+            <i class='bx bx-shape-triangle'></i>
+            <p class="card-header-title">Triangulo Isóceles</p>
+         </div>
+         <form action="#" method="post" accept-charset="utf-8">
+            <label for="lado1i">Ingresa el lado 1</label>
+            <input type="number" name="lado1i" id="lado1i" value="" required />
+            <label for="lado2i">Ingresa el lado 2</label>
+            <input type="number" name="lado2i" id="lado2i" value="" required />
+            <label for="basei">Ingresa la base </label>
+            <input type="number" name="basei" id="basei" value="" required />
+            <button type="button" onclick="calcularIsoceles()">Calcular</button>
+         </form>
+         <div class="results">
+            <h3>Altura: <span id="alturaIsoceles" class="results-value"></span></h3>
+            <h3>Perímetro: <span id="perimetroIsoceles" class="results-value"></span></h3>
+            <h3>Area: <span id="areaIsoceles" class="results-value"></span></h3>
+         </div>
+      </section>
+
+
+
+      <section class="card">
+         <div class="card-header info">
+            <i class='bx bx-shape-triangle'></i>
+            <p class="card-header-title">Triangulo</p>
+         </div>
+         <form action="#" method="post" accept-charset="utf-8">
+            <label for="lado1">Ingresa el lado 1</label>
+            <input type="number" name="lado1" id="lado1" value="" required />
+            <label for="lado2">Ingresa el lado 2</label>
+            <input type="number" name="lado2" id="lado2" value="" required />
+            <label for="base">Ingresa la base </label>
+            <input type="number" name="base" id="base" value="" required />
+            <label for="altura">Ingresa la altura</label>
+            <input type="number" name="altura" id="altura" value="" required />
+            <button type="button" onclick="calcularTriangulo()">Calcular</button>
+
+         </form>
+         <div class="results">
+            <h3>Perímetro: <span id="perimetroTriangulo" class="results-value"></span></h3>
+            <h3>Area: <span id="areaTriangulo" class="results-value"></span></h3>
+         </div>
+      </section>
+      <section class="card">
+         <div class="card-header success">
+            <i class='bx bx-circle'></i>
+            <p class="card-header-title">Círculo</p>
+         </div>
+         <form action="#" method="post" accept-charset="utf-8">
+            <label for="radio">Ingresa un lado</label>
+            <input type="number" name="radio" id="radio" value="" />
+            <input type="number" name="radio" id="radio" value="" />Calcular</input>
+         </form>
+         <div class="results">
+            <h3>Perímetro: <span id="perimetroCirculo" class="results-value"></span></h3>
+            <h3>Area: <span id="areaCirculo" class="results-value"></span></h3>
+         </div>
+      </section>
+
+   </main>
+   <footer></footer>
+
+   <script src="./figuras.js"></script>
+</body>
+
+</html>
