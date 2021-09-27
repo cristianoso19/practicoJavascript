@@ -64,6 +64,9 @@ ul li {
 .container {
    margin: 1.8rem 1.8rem;
 }
+.geometry {
+   display: none;
+}
 .card {
    margin-top: 1.8rem;
    padding: 1.5rem 1.5rem;
