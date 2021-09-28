@@ -1,3 +1,11 @@
+function toggleVisible() {
+   let geometric = document.getElementById("geometry");
+   let discount = document.getElementById("discount");
+   geometric.classList.toggle("no-visible");
+   discount.classList.toggle("no-visible");
+}
+
+
 function calcularDescuento() {
 
    const input1 = document.getElementById("precioOriginal");

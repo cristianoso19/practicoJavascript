@@ -21,15 +21,13 @@
             <i class='bx bx-calculator'></i>
          </span>
          <ul>
-            <li><i class='bx bx-help-circle'></i></li>
-            <li><i class='bx bxl-instagram'></i></li>
-            <li><i class='bx bxl-facebook'></i></li>
-            <li><i class='bx bxl-twitter'></i></li>
+            <li><i class='bx bx-shape-square' onclick="toggleVisible()"></i></li>
+            <li><i class='bx bxs-discount' onclick="toggleVisible()"></i></li>
          </ul>
       </nav>
    </header>
    <main class="container">
-      <div class="discount">
+      <div id="discount" class="discount">
          <section class="card">
             <div class="card-header success">
                <i class='bx bx-cart-alt'></i>
@@ -52,7 +50,7 @@
 
          </section>
       </div>
-      <div class="geometry">
+      <div id="geometry" class="geometry no-visible">
          <section class="card">
             <div class="card-header danger">
                <i class='bx bx-square'></i>
