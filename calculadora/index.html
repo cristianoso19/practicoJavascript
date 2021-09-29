@@ -23,11 +23,43 @@
          <ul>
             <li><i class='bx bx-shape-square' onclick="toggleVisible()"></i></li>
             <li><i class='bx bxs-discount' onclick="toggleVisible()"></i></li>
+            <li><i class='bx bx-bar-chart-alt-2' onclick="toggleVisible()"></i></li>
          </ul>
       </nav>
    </header>
    <main class="container">
-      <div id="discount" class="discount">
+      <div id="average" class="average">
+         <section class="card">
+            <div class="card-header success">
+               <i class='bx bx-cart-alt'></i>
+               <p class="card-header-title">Promedios</p>
+            </div>
+            <div class="card-body">
+               <form action="" method="post" accept-charset="utf-8">
+                  <label for="elemento">Agrega numeros para formar una lista</label>
+                  <div class="list-input">
+                     <input type="number" name="elemento" id="elemento" required autofocus />
+                     <button type="button" class="button-add" onclick="agregaElemento()"><i class='bx bx-plus'></i></button>
+                  </div>
+                  <div class="lista">
+                     <span>Lista Ordenada:</span>
+                     <ul id="lista-ordenada" class="lista-ordenada">
+                     </ul>
+                  </div>
+                  <button type="button" onclick="calcularPromedios()">Calcular</button>
+               </form>
+            </div>
+
+            <div class="results">
+               <h3>Promedio: <span id="promedio" class="results-value"></span></h3>
+               <h3>Mediana: <span id="mediana" class="results-value"></span></h3>
+               <h3>Moda: <span id="moda" class="results-value"></span></h3>
+               <h3>Aritmética: <span id="aritmetica" class="results-value"></span></h3>
+            </div>
+         </section>
+      </div>
+
+      <div id="discount" class="discount no-visible">
          <section class="card">
             <div class="card-header success">
                <i class='bx bx-cart-alt'></i>

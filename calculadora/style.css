@@ -58,7 +58,7 @@ header nav ul {
    display: flex;
    justify-content: flex-end;
 }
-ul li {
+header nav ul li {
    list-style-type: none; 
    margin-right: 1rem;
 }
@@ -131,7 +131,30 @@ input {
    background: transparent;
    outline: none;
 }
-
+.list-input input {
+   min-width: 60%;
+}
+.button-add {
+   min-width: 30%;
+   height: 3rem;
+}
+.lista {
+   margin-top: 1rem;
+   display: block;
+}
+.lista span {
+   font-size: 1.2rem;
+}
+.lista ul {
+   width: 100%;
+   display: flex;
+}
+.lista ul li {
+    list-style-type: none; 
+}
+.lista ul li:after {
+   content: ", \00a0";
+}
 .results{
    margin-top: 1.8rem;
 } 

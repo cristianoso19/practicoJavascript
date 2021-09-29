@@ -1,13 +1,47 @@
+let lista = [];
+
+function agregaElemento() {
+   const inputElemento = document.getElementById("elemento");
+   const elemento = parseInt(inputElemento.value);
+   lista.push(elemento);
+   muestraElementos();
+   inputElemento.value = "";
+   inputElemento.focus();
+}
+
+function muestraElementos() {
+   lista.sort(comparar);
+   limpiarLista();
+   lista.forEach(imprimirElementos)
+}
+
+function limpiarLista() {
+   let listaUl = document.getElementById("lista-ordenada");
+   listaUl.innerHTML = "";
+}
+
+function imprimirElementos(element, index, array) {
+   let listaUl = document.getElementById("lista-ordenada");
+   let li = document.createElement('li');
+   li.textContent = element;
+   listaUl.appendChild(li);
+
+}
+
+function comparar(a, b) {
+   return a - b;
+}
+
 function toggleVisible() {
    let geometric = document.getElementById("geometry");
    let discount = document.getElementById("discount");
+   let average = document.getElementById("average");
    geometric.classList.toggle("no-visible");
    discount.classList.toggle("no-visible");
+   average.classList.toggle("no-visible");
 }
 
-
 function calcularDescuento() {
-
    const input1 = document.getElementById("precioOriginal");
    const input2 = document.getElementById("descuento");
    const input3 = document.getElementById("cupon");
@@ -21,7 +55,6 @@ function calcularDescuento() {
    const precioFinal = precio - valorDescuento - valorCupon;
    const spanPrecio = document.getElementById("precioDescuento");
    spanPrecio.textContent = precioFinal;
-
 }
 
 function calcularCuponDscto(precio, cupon) {
