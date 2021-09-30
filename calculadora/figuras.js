@@ -1,5 +1,21 @@
 let lista = [];
 
+function calcularPromedios() {
+   const promedio = calculaPromedio();
+   console.log(promedio);
+}
+
+function calculaPromedio() {
+   let sumaElementos = 0;
+
+   for (let i = 0; i < lista.length; i++) {
+      sumaElementos = sumaElementos + lista[i];
+   }
+   const promedio = sumaElementos / lista.length;
+   return promedio;
+}
+
+//Agregar, eliminar, ordenar lista
 function agregaElemento() {
    const inputElemento = document.getElementById("elemento");
    if (inputElemento.value != "") {
@@ -8,7 +24,7 @@ function agregaElemento() {
       muestraElementos();
       inputElemento.value = "";
 
-      if (lista.lenght != 0) {
+      if (lista.length != 0) {
          activarBotonEliminar();
       }
    }
@@ -22,13 +38,13 @@ function muestraElementos() {
 }
 
 function limpiarLista() {
-   let listaUl = document.getElementById("lista-ordenada");
+   const listaUl = document.getElementById("lista-ordenada");
    listaUl.innerHTML = "";
 }
 
 function imprimirElementos(element, index, array) {
-   let listaUl = document.getElementById("lista-ordenada");
-   let li = document.createElement('li');
+   const listaUl = document.getElementById("lista-ordenada");
+   const li = document.createElement('li');
    li.textContent = element;
    listaUl.appendChild(li);
 
@@ -53,7 +69,7 @@ function quitarBotonEliminar() {
    let botonEliminar = document.getElementById("botonEliminar");
    botonEliminar.classList.add("no-visible");
 }
-
+//_________________________________________________________________
 function toggleVisible() {
    let geometric = document.getElementById("geometry");
    let discount = document.getElementById("discount");
