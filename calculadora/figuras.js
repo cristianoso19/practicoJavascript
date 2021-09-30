@@ -2,7 +2,22 @@ let lista = [];
 
 function calcularPromedios() {
    const promedio = calculaPromedio();
-   console.log(promedio);
+   const mediana = calculaMediana();
+   console.log("PROMEDIO: " + promedio);
+   console.log("MEDIANA: " + mediana);
+}
+
+function calculaMediana() {
+   let mediana = 0;
+   const elementoMediana = Math.round(lista.length / 2);
+   if (lista.length % 2 === 0) {
+      //es par
+      mediana = (lista[elementoMediana] + lista[elementoMediana - 1]) / 2;
+   } else {
+      //es impar
+      mediana = lista[elementoMediana];
+   }
+   return mediana
 }
 
 function calculaPromedio() {
