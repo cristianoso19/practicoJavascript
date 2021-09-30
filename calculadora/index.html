@@ -41,10 +41,13 @@
                      <input type="number" name="elemento" id="elemento" required autofocus />
                      <button type="button" class="button-add" onclick="agregaElemento()"><i class='bx bx-plus'></i></button>
                   </div>
-                  <div class="lista">
+                  <div id="lista" class="lista">
                      <span>Lista Ordenada:</span>
                      <ul id="lista-ordenada" class="lista-ordenada">
                      </ul>
+                     <button type="button" id="botonEliminar" class="no-visible button-danger" onclick="eliminarLista()">
+                        Eliminar Lista
+                     </button>
                   </div>
                   <button type="button" onclick="calcularPromedios()">Calcular</button>
                </form>

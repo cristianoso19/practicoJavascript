@@ -138,6 +138,10 @@ input {
    min-width: 30%;
    height: 3rem;
 }
+.button-danger {
+   width: 100%;
+   background: var(--danger);
+}
 .lista {
    margin-top: 1rem;
    display: block;
