@@ -3,6 +3,7 @@ let lista = [];
 function calcularPromedios() {
    const promedio = calculaPromedio();
    const mediana = calculaMediana();
+   const moda = calcularModa();
    console.log("PROMEDIO: " + promedio);
    console.log("MEDIANA: " + mediana);
 }
