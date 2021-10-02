@@ -132,13 +132,27 @@ function quitarBotonEliminar() {
    botonEliminar.classList.add("no-visible");
 }
 //_________________________________________________________________
-function toggleVisible() {
+function toggleVisible(section) {
    let geometric = document.getElementById("geometry");
    let discount = document.getElementById("discount");
    let average = document.getElementById("average");
-   geometric.classList.toggle("no-visible");
-   discount.classList.toggle("no-visible");
-   average.classList.toggle("no-visible");
+   geometric.classList.add("no-visible");
+   discount.classList.add("no-visible");
+   average.classList.add("no-visible");
+   switch (section) {
+      case "geometry":
+         geometric.classList.remove("no-visible");
+         break;
+      case "discount":
+         discount.classList.remove("no-visible");
+         break;
+      case "average":
+         average.classList.remove("no-visible");
+         break;
+      default:
+         console.log("Boton Incorrecto");
+         break;
+   }
 }
 
 function calcularDescuento() {
