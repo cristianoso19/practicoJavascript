@@ -75,6 +75,7 @@ header nav ul li {
    border-radius: 0.7rem;
    background-color: var(--bg-card-color);
 }
+
 .primary{
    color: var(--primary);
 }
@@ -120,7 +121,7 @@ input:hover {
    border: 2px solid var(--primary-color);
 }
 input:focus {
-   border: 3px solid var(--primary-color);
+   border: 2px solid var(--primary-color);
 }
 input {
    color: var(--font-primary-color);
@@ -132,10 +133,10 @@ input {
    outline: none;
 }
 .list-input input {
-   min-width: 60%;
+   min-width: 40%;
 }
 .button-add {
-   min-width: 30%;
+   min-width: 27%;
    height: 3rem;
 }
 .button-danger {
