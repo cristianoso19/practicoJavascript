@@ -4,9 +4,29 @@ function calcularPromedios() {
    const promedio = calculaPromedio();
    const mediana = calculaMediana();
    const moda = calcularModa();
+   const geometrica = calcularGeometrica();
    console.log("PROMEDIO: " + promedio);
    console.log("MEDIANA: " + mediana);
    console.log("MODA: Valor " + moda.valor + ", se repite: " + moda.contar);
+   console.log("GEOMETRICA: " + geometrica);
+   const spanPromedio = document.getElementById("promedio");
+   const spanMediana = document.getElementById("mediana");
+   const spanModa = document.getElementById("moda");
+   const spanGeometrica = document.getElementById("geometrica");
+
+   spanPromedio.textContent = promedio;
+   spanMediana.textContent = mediana;
+   spanModa.textContent = "Valor " + moda.valor + ", se repite: " + moda.contar;
+   spanGeometrica.textContent = geometrica;
+   lista = [];
+
+}
+
+function calcularGeometrica() {
+   const multiplicacion = multiplicarElementos();
+   console.log("Mult" + multiplicacion);
+   const geometrica = Math.pow(multiplicacion, 1 / lista.length);
+   return geometrica;
 }
 
 function calcularModa() {
@@ -112,6 +132,14 @@ function imprimirElementos(element, index, array) {
 
 }
 
+function multiplicarElementos() {
+   let resultado = 1;
+   for (let i = 0; i < lista.length; i++) {
+      resultado = resultado * lista[i];
+   }
+   return resultado;
+}
+
 function comparar(a, b) {
    return a - b;
 }
@@ -136,18 +164,30 @@ function toggleVisible(section) {
    let geometric = document.getElementById("geometry");
    let discount = document.getElementById("discount");
    let average = document.getElementById("average");
+   let gButton = document.getElementById("gButton");
+   let dButton = document.getElementById("dButton");
+   let aButton = document.getElementById("aButton");
+
    geometric.classList.add("no-visible");
    discount.classList.add("no-visible");
    average.classList.add("no-visible");
+   gButton.classList.remove("active");
+   dButton.classList.remove("active");
+   aButton.classList.remove("active");
+
+
    switch (section) {
       case "geometry":
          geometric.classList.remove("no-visible");
+         gButton.classList.add("active");
          break;
       case "discount":
          discount.classList.remove("no-visible");
+         dButton.classList.add("active");
          break;
       case "average":
          average.classList.remove("no-visible");
+         aButton.classList.add("active");
          break;
       default:
          console.log("Boton Incorrecto");

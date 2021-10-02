@@ -65,6 +65,9 @@ header nav ul li {
 .no-visible {
    display: none;
 }
+.active {
+  color: var(--primary-color) 
+}
 .container {
    margin: 1.8rem 1.8rem;
 }
