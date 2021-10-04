@@ -104,14 +104,18 @@ header nav ul li {
 .card-header i{
    font-size: var(--font-icons);
 }
+.card-body button{
+   width: 100%;
+}
 button {
-   margin-top:1rem; 
+   margin-top: 1rem; 
    background: var(--primary-color);
    height: 3.3rem;
    border: 0px solid transparent;
    border-radius: 0.6rem;
    color: var(--font-primary-color);
 }
+
 form {
    display: flex;
    flex-direction: column;

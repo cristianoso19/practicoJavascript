@@ -1,251 +1,3 @@
-let lista = [];
-
-function calcularPromedios() {
-   const promedio = calculaPromedio();
-   const mediana = calculaMediana();
-   const moda = calcularModa();
-   const geometrica = calcularGeometrica();
-   console.log("PROMEDIO: " + promedio);
-   console.log("MEDIANA: " + mediana);
-   console.log("MODA: Valor " + moda.valor + ", se repite: " + moda.contar);
-   console.log("GEOMETRICA: " + geometrica);
-   const spanPromedio = document.getElementById("promedio");
-   const spanMediana = document.getElementById("mediana");
-   const spanModa = document.getElementById("moda");
-   const spanGeometrica = document.getElementById("geometrica");
-
-   spanPromedio.textContent = promedio;
-   spanMediana.textContent = mediana;
-   spanModa.textContent = "Valor " + moda.valor + ", se repite: " + moda.contar;
-   spanGeometrica.textContent = geometrica;
-   lista = [];
-
-}
-
-function calcularGeometrica() {
-   const multiplicacion = multiplicarElementos();
-   console.log("Mult" + multiplicacion);
-   const geometrica = Math.pow(multiplicacion, 1 / lista.length);
-   return geometrica;
-}
-
-function calcularModa() {
-   let modaElementos = [];
-   let cuentaValor = {};
-   let contar = 0;
-   let valor = 0;
-
-   for (let i = 0; i < lista.length; i++) {
-      if (i != 0) {
-         if (lista[i - 1] == lista[i]) {
-            contar++;
-         } else {
-            cuentaValor = {
-               valor,
-               contar
-            };
-            modaElementos.push(cuentaValor);
-            contar = 1;
-            valor = lista[i];
-         }
-         if (i == lista.length - 1) {
-            cuentaValor = {
-               valor,
-               contar
-            };
-            modaElementos.push(cuentaValor);
-         }
-      } else {
-         contar = 1;
-         valor = lista[i]
-      }
-   }
-   modaElementos.sort(ordenaCuenta);
-   //retornamos el ultimo elemento del array ordenado
-   return modaElementos.at(-1);
-}
-
-function ordenaCuenta(a, b) {
-   if (a.contar < b.contar) {
-      return -1;
-   } else if (a.contar > b.contar) {
-      return 1;
-   }
-   return 0;
-}
-
-function calculaMediana() {
-   let mediana = 0;
-   const elementoMediana = Math.round(lista.length / 2);
-   if (lista.length % 2 === 0) {
-      //es par
-      mediana = (lista[elementoMediana] + lista[elementoMediana - 1]) / 2;
-   } else {
-      //es impar
-      mediana = lista[elementoMediana];
-   }
-   return mediana
-}
-
-function calculaPromedio() {
-   let sumaElementos = 0;
-
-   for (let i = 0; i < lista.length; i++) {
-      sumaElementos = sumaElementos + lista[i];
-   }
-   const promedio = sumaElementos / lista.length;
-   return promedio;
-}
-
-//Agregar, eliminar, ordenar lista
-function agregaElemento() {
-   const inputElemento = document.getElementById("elemento");
-   if (inputElemento.value != "") {
-      const elemento = parseInt(inputElemento.value);
-      lista.push(elemento);
-      muestraElementos();
-      inputElemento.value = "";
-
-      if (lista.length != 0) {
-         activarBotonEliminar();
-      }
-   }
-   inputElemento.focus();
-}
-
-function muestraElementos() {
-   lista.sort(comparar);
-   limpiarLista();
-   lista.forEach(imprimirElementos)
-}
-
-function limpiarLista() {
-   const listaUl = document.getElementById("lista-ordenada");
-   listaUl.innerHTML = "";
-}
-
-function imprimirElementos(element, index, array) {
-   const listaUl = document.getElementById("lista-ordenada");
-   const li = document.createElement('li');
-   li.textContent = element;
-   listaUl.appendChild(li);
-
-}
-
-function multiplicarElementos() {
-   let resultado = 1;
-   for (let i = 0; i < lista.length; i++) {
-      resultado = resultado * lista[i];
-   }
-   return resultado;
-}
-
-function comparar(a, b) {
-   return a - b;
-}
-
-function eliminarLista() {
-   limpiarLista();
-   lista = [];
-   quitarBotonEliminar();
-}
-
-function activarBotonEliminar() {
-   let botonEliminar = document.getElementById("botonEliminar");
-   botonEliminar.classList.remove("no-visible");
-}
-
-function quitarBotonEliminar() {
-   let botonEliminar = document.getElementById("botonEliminar");
-   botonEliminar.classList.add("no-visible");
-}
-//_________________________________________________________________
-function toggleVisible(section) {
-   let geometric = document.getElementById("geometry");
-   let discount = document.getElementById("discount");
-   let average = document.getElementById("average");
-   let gButton = document.getElementById("gButton");
-   let dButton = document.getElementById("dButton");
-   let aButton = document.getElementById("aButton");
-
-   geometric.classList.add("no-visible");
-   discount.classList.add("no-visible");
-   average.classList.add("no-visible");
-   gButton.classList.remove("active");
-   dButton.classList.remove("active");
-   aButton.classList.remove("active");
-
-
-   switch (section) {
-      case "geometry":
-         geometric.classList.remove("no-visible");
-         gButton.classList.add("active");
-         break;
-      case "discount":
-         discount.classList.remove("no-visible");
-         dButton.classList.add("active");
-         break;
-      case "average":
-         average.classList.remove("no-visible");
-         aButton.classList.add("active");
-         break;
-      default:
-         console.log("Boton Incorrecto");
-         break;
-   }
-}
-
-function calcularDescuento() {
-   const input1 = document.getElementById("precioOriginal");
-   const input2 = document.getElementById("descuento");
-   const input3 = document.getElementById("cupon");
-
-   const precio = input1.value;
-   const descuento = input2.value;
-   const cupon = input3.value;
-
-   const valorDescuento = calculaValorDscto(precio, descuento);
-   const valorCupon = calcularCuponDscto(precio, cupon);
-   const precioFinal = precio - valorDescuento - valorCupon;
-   const spanPrecio = document.getElementById("precioDescuento");
-   spanPrecio.textContent = precioFinal;
-}
-
-function calcularCuponDscto(precio, cupon) {
-   const porcentaje = getCuponDsctoValue(cupon);
-   const valorCupon = calculaValorDscto(precio, porcentaje);
-   return valorCupon;
-}
-
-function getCuponDsctoValue(cuponBuscado) {
-   const cupones = [{
-         name: "JuanDC_es_Batman",
-         discount: 15,
-      },
-      {
-         name: "pero_no_le_digas_a_nadie",
-         discount: 30,
-      },
-      {
-         name: "es_un_secreto",
-         discount: 25,
-      },
-   ];
-   const userCupon = cupones.find(cupon => cupon.name === cuponBuscado);
-
-   if (typeof userCupon === 'undefined') {
-      return 0;
-   } else {
-      return userCupon.discount;
-   }
-}
-
-function calculaValorDscto(precio, descuento) {
-   const descuentoPorcentaje = 1 - (descuento / 100);
-   return precio - (precio * descuentoPorcentaje);
-}
-
-
 //GEOMETRIA
 function calcularCuadrado() {
    const input = document.getElementById("ladocuadrado");
@@ -310,41 +62,18 @@ function calcularCirculo() {
    spanArea.textContent = area;
 }
 
-
-//Código cuadrado
-console.group("Cuadrados");
-/*const ladoCuadrado = 5;*/
-/*console.log("Los lados del cuadrado miden: " + ladoCuadrado + "cm");*/
-
 function perimetroCuadrado(lado) {
    return lado * 4;
 }
-//console.log("El perimetro del cuadrado: " + perimetroCuadrado + "cm");
+
 function areaCuadrado(lado) {
    return lado * lado;
 }
-/*const areaCuadrado = ladoCuadrado * ladoCuadrado;*/
-/*console.log("El area del cuadrado es: " + areaCuadrado + "cm2");*/
-console.groupEnd();
 
-//Código Triangulo
-console.group("Triangulos")
-/*const ladoTriangulo1 = 6;*/
-/*const ladoTriangulo2 = 6;*/
-/*const baseTriangulo = 4;*/
-/*const alturaTriangulo = 5.5;*/
-
-/*console.log(*/
-/*"Los lados del triangulo miden " +*/
-/*ladoTriangulo1 + "cm, " +*/
-/*ladoTriangulo2 + "cm, " +*/
-/*baseTriangulo + "cm."*/
-/*);*/
 function perimetroTriangulo(lado1, lado2, base) {
    return (lado1 + lado2) + base;
 }
-//console.log("La altura del triangulo: " + alturaTriangulo + "cm")
-//const perimetroTriangulo = ladoTriangulo1 + ladoTriangulo2 + baseTriangulo;
+
 function areaTriangulo(base, altura) {
    return (base * altura) / 2;
 }
@@ -360,19 +89,7 @@ function chequearLados(lado1, lado2) {
 function calcularAltura(lado, base) {
    return (Math.sqrt(Math.pow(lado, 2) - (Math.pow(base, 2) / 4)));
 }
-//console.log("El perimetro del triangulo: " + perimetroTriangulo + "cm");
-//const areaTriangulo = (baseTriangulo * alturaTriangulo) / 2;
-//console.log("El area del triangulo: " + areaTriangulo + "cm2");
-console.groupEnd();
 
-//Código Circulo
-console.group("Circulo");
-//radio, diametro, pi, circunferencia, area
-/*const radioCirculo = 4;*/
-/*const diametroCirculo = radioCirculo * 2;*/
-/*const pi = Math.PI;*/
-/*const circunferencia = diametroCirculo * pi;*/
-/*const areaCirculo = (radioCirculo * radioCirculo) * pi;*/
 function diametroCirculo(radio) {
    return radio * 2;
 }
@@ -385,9 +102,3 @@ function perimetroCirculo(radio) {
 function areaCirculo(radio) {
    return (radio * radio) * Math.PI;
 }
-/*console.log("El radio del circulo: " + radioCirculo + "cm");*/
-/*console.log("El diametro del circulo: " + diametroCirculo + "cm");*/
-/*console.log("El pi del circulo: " + pi + "cm");*/
-/*console.log("La circunferencia del círculo: " + circunferencia + "cm");*/
-/*console.log("El área del circulo: " + areaCirculo + "cm2");*/
-console.groupEnd();
