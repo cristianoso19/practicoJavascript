@@ -1,23 +1,26 @@
 function toggleVisible(section) {
-   let geometric = document.getElementById("geometry");
-   let discount = document.getElementById("discount");
-   let average = document.getElementById("average");
-   let salary = document.getElementById("salary");
+   const geometric = document.getElementById("geometry");
+   const discount = document.getElementById("discount");
+   const average = document.getElementById("average");
+   const salary = document.getElementById("salary");
+   const save = document.getElementById("saver");
 
-   let gButton = document.getElementById("gButton");
-   let dButton = document.getElementById("dButton");
-   let aButton = document.getElementById("aButton");
-   let sButton = document.getElementById("sButton");
+   const gButton = document.getElementById("gButton");
+   const dButton = document.getElementById("dButton");
+   const aButton = document.getElementById("aButton");
+   const sButton = document.getElementById("sButton");
+   const saButton = document.getElementById("saButton");
 
    geometric.classList.add("no-visible");
    discount.classList.add("no-visible");
    average.classList.add("no-visible");
    salary.classList.add("no-visible");
+   save.classList.add("no-visible");
    gButton.classList.remove("active");
    dButton.classList.remove("active");
    aButton.classList.remove("active");
    sButton.classList.remove("active");
-
+   saButton.classList.remove("active");
 
 
    switch (section) {
@@ -36,6 +39,10 @@ function toggleVisible(section) {
       case "salary":
          salary.classList.remove("no-visible");
          sButton.classList.add("active");
+         break;
+      case "saver":
+         save.classList.remove("no-visible");
+         saButton.classList.add("active");
          break;
       default:
          console.log("Boton Incorrecto");

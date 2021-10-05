@@ -30,6 +30,21 @@ html {
    font-family: "Montserrat", sans-serif, Helvetica;
    color: var(--font-secondary-color);
 }
+.primary{
+   color: var(--primary);
+}
+.info{ 
+   color: var(--info);
+}
+.danger{
+   color: var(--danger);
+}
+.success{
+   color: var(--success);
+}
+.warning{
+   color: var(--warning);
+}
 
 header nav {
    font-size: var(--font-icons);
@@ -57,6 +72,7 @@ header nav ul {
    width: 40vw;
    display: flex;
    justify-content: flex-end;
+   align-items: center;
 }
 header nav ul li {
    list-style-type: none; 
@@ -66,63 +82,48 @@ header nav ul li {
    display: none;
 }
 .active {
-  color: var(--primary-color) 
+  color: var(--success);
 }
 .container {
    margin: 1.8rem 1.8rem;
 }
-
+.title {
+   font-size: 2.2rem;
+   font-weight: 600;
+}
 .card {
    margin-top: 1.8rem;
    padding: 1.5rem 1.5rem;
    border-radius: 0.7rem;
    background-color: var(--bg-card-color);
 }
-
-.primary{
-   color: var(--primary);
-}
-.info{ 
-   color: var(--info);
-}
-.danger{
-   color: var(--danger);
-}
-.success{
-   color: var(--success);
-}
-.warning{
-   color: var(--warning);
-}
 .card-header {
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
    font-size: 1.8rem;
-   font-weight: 600;
-}
-.card-header i{
-   font-size: var(--font-icons);
 }
 .card-body button{
    width: 100%;
 }
 button {
-   margin-top: 1rem; 
+   margin-top: 2rem; 
    background: var(--primary-color);
    height: 3.3rem;
    border: 0px solid transparent;
    border-radius: 0.6rem;
    color: var(--font-primary-color);
 }
-
+.help {
+   text-align: justify;
+   text-justify: inter-character;
+   font-size: 1.4rem;
+}
 form {
    display: flex;
    flex-direction: column;
 }
 label {
-   margin-top: 0.8rem;
+   margin-top: 1.2rem;
    font-size: 1.4rem;
+   font-weight: 600;
 }
 input:hover {
    border: 2px solid var(--primary-color);
@@ -132,18 +133,21 @@ input:focus {
 }
 input {
    color: var(--font-primary-color);
-   margin-top: 0.5rem;
+   margin-top: 1.2rem;
    height: 3rem;
    border: 2px solid var(--font-primary-color);
    border-radius: 0.6rem;
    background: transparent;
    outline: none;
 }
+.list-input{
+   display: inline-block;
+}
 .list-input input {
-   min-width: 40%;
+   min-width: 70%;
 }
 .button-add {
-   min-width: 27%;
+   max-width: 25%;
    height: 3rem;
 }
 .button-danger {

@@ -16,53 +16,94 @@
    <header>
       <nav>
          <span>
-            <h4 class="logo-title">Multi</h4>
+            <h4 class="logo-title">M</h4>
             <i class='bx bx-calculator'></i>
          </span>
          <ul>
             <li id="gButton"><i class='bx bx-shape-square' onclick="toggleVisible('geometry')"></i></li>
             <li id="dButton"><i class='bx bxs-discount' onclick="toggleVisible('discount')"></i></li>
             <li id="aButton"><i class='bx bx-bar-chart-alt-2' onclick="toggleVisible('average')"></i></li>
-            <li id="sButton" class="active"><i class='bx bx-money' onclick="toggleVisible('salary')"></i></li>
-
+            <li id="sButton"><i class='bx bx-money' onclick="toggleVisible('salary')"></i></li>
+            <li id="saButton" class="active"><i class='bx bx-dollar-circle' onclick="toggleVisible('saver')"></i></li>
          </ul>
       </nav>
    </header>
    <main class="container">
-      <div id="salary" class="salary">
-         <section class="card">
-            <div class="card-header warning">
-               <i class='bx bx-cart-alt'></i>
-               <p class="card-header-title">Salarios</p>
-            </div>
+      <section id="saver" class="saver no-visible">
+         <div class="title success">
+            <span>
+               <i class='bx bxs-dollar-circle'></i>
+               Ahorros
+            </span>
+         </div>
+         <div class="card ">
+            <div class="title"></div>
+            <p class="help">Aquí podras calcular el valor que debes ahorrar de acuerdo a tus ingresos y gastos, recuerda, el ahorro es al menos el 10%.</p>
+         </div>
+         <div class="card">
             <div class="card-body">
-               <p>Presiona calcular para mostrar la media general y la media del top 10% de los salarios de la base de datos</p>
+               <form action="#" method="post" accept-charset="utf-8">
+                  <label for="ingreso">¿Cuánto es el total de tus ingresos mensuales?</label>
+                  <input type="number" name="ingreso" id="ingreso" value="" required />
+                  <label for="gasto">¿Cuánto es el total de tus gastos mensuales?</label>
+                  <input type="number" name="gasto" id="gasto" value="" required />
+                  <button type="button" onclick="calcularAhorro()">Calcular</button>
+               </form>
+            </div>
+            <div class="results">
+               <h3>Debes ahorrar: <span id="ahorro" class="results-value"></span></h3>
+            </div>
+         </div>
+      </section>
+
+      <section id="salary" class="salary no-visible">
+         <div class="title success">
+            <span>
+               <i class='bx bx-money'></i>
+               Calculo de salarios
+            </span>
+         </div>
+         <div class="card ">
+            <div class="title"></div>
+            <p class="help">Aquí podras conocer la media general y la media del top 10% de una lista de personas en el archivo data.js</p>
+         </div>
+
+         <div class="card">
+            <div class="card-body">
                <button type="button" onclick="calcularSalarios()">Calcular</button>
             </div>
-
             <div class="results">
                <h3>Mediana: <span id="mediana-salarios" class="results-value"></span></h3>
                <h3>Mediana TOP 10%: <span id="mediana-top" class="results-value"></span></h3>
             </div>
-         </section>
-      </div>
-      <div id="average" class="average no-visible">
-         <section class="card">
-            <div class="card-header success">
-               <i class='bx bx-cart-alt'></i>
-               <p class="card-header-title">Promedios</p>
-            </div>
+         </div>
+      </section>
+
+      <section id="average" class="average no-visible">
+         <div class="title success">
+            <span>
+               <i class='bx bx-bar-chart-alt-2'></i>
+               Promedio
+
+            </span>
+         </div>
+         <div class="card ">
+            <div class="title"></div>
+            <p class="help">Aquí podras conocer los promedios más comunes como: Promedio Aritmético, Mediana, Moda, Promedio Geométrico. Ingresa uno a uno los elementos y estos se ordenaran aútomaticamente</p>
+         </div>
+         <div class="card">
             <div class="card-body">
                <form action="" method="post" accept-charset="utf-8">
                   <label for="elemento">Agrega numeros para formar una lista</label>
                   <div class="list-input">
                      <input type="number" name="elemento" id="elemento" required autofocus />
-                     <button type="button" class="button-add" onclick="agregaElemento()"><i class='bx bx-plus'></i></button>
+                     <button type="button" class="button-add" onclick="agregaElemento()">
+                        <i class='bx bx-plus'></i>
+                     </button>
                   </div>
                   <div id="lista" class="lista">
                      <span>Lista Ordenada:</span>
-                     <ul id="lista-ordenada" class="lista-ordenada">
-                     </ul>
+                     <ul id="lista-ordenada" class="lista-ordenada"></ul>
                      <button type="button" id="botonEliminar" class="no-visible button-danger" onclick="eliminarLista()">
                         Eliminar Lista
                      </button>
@@ -77,18 +118,22 @@
                <h3>Moda: <span id="moda" class="results-value"></span></h3>
                <h3>Geométrica: <span id="geometrica" class="results-value"></span></h3>
             </div>
-         </section>
+      </section>
       </div>
 
-      <div id="discount" class="discount no-visible">
-         <section class="card">
-            <div class="card-header success">
-               <i class='bx bx-cart-alt'></i>
-               <p class="card-header-title">Precio Descuento</p>
-            </div>
-            <div class="card-header">
+      <section id="discount" class="discount no-visible">
+         <div class="title success">
+            <span>
+               <i class='bx bxs-discount'></i>
+               Cálculo de descuentos
+            </span>
+         </div>
+         <div class="card ">
+            <div class="title"></div>
+            <p class="help">Aquí podras calcular el precio final a pagar con un descuento y con un cupon de descuento, prueba los siguientes: JuanDC_es_Batman, pero_no_le_digas_a_nadie, es_un_secreto</p>
+         </div>
 
-            </div>
+         <div class="card">
             <div class="card-body">
                <form action="#" method="post" accept-charset="utf-8">
                   <label for="precioOriginal">Ingresa el precio original</label>
@@ -104,13 +149,26 @@
                <h3>Precio final: <span id="precioDescuento" class="results-value"></span></h3>
             </div>
 
-         </section>
-      </div>
-      <div id="geometry" class="geometry no-visible">
-         <section class="card">
+         </div>
+      </section>
+      <section id="geometry" class="geometry">
+         <div class="title success">
+            <span>
+               <i class='bx bxs-discount'></i>
+               Cálculo de figuras
+            </span>
+         </div>
+         <div class="card ">
+            <div class="title"></div>
+            <p class="help">Aquí podras calcular el area y perímetro de las principales figuras geométricas, solo introduce los datos solicitados y click en calcular.</p>
+         </div>
+
+         <div class="card">
             <div class="card-header danger">
-               <i class='bx bx-square'></i>
-               <p class="card-header-title">Cuadrado</p>
+               <span>
+                  <i class='bx bx-square'></i>
+                  Cuadrado
+               </span>
             </div>
             <form action="#" method="post" accept-charset="utf-8">
                <label for="ladocuadrado">Ingresa un lado</label>
@@ -121,11 +179,13 @@
                <h3>Perímetro: <span id="perimetroCuadrado" class="results-value"></span></h3>
                <h3>Area: <span id="areaCuadrado" class="results-value"></span></h3>
             </div>
-         </section>
-         <section class="card">
+         </div>
+         <div class="card">
             <div class="card-header warning">
-               <i class='bx bx-shape-triangle'></i>
-               <p class="card-header-title">Triangulo Isóceles</p>
+               <span>
+                  <i class='bx bx-shape-triangle'></i>
+                  Triangulo Isoceles
+               </span>
             </div>
             <form action="#" method="post" accept-charset="utf-8">
                <label for="lado1i">Ingresa el lado 1</label>
@@ -141,11 +201,13 @@
                <h3>Perímetro: <span id="perimetroIsoceles" class="results-value"></span></h3>
                <h3>Area: <span id="areaIsoceles" class="results-value"></span></h3>
             </div>
-         </section>
-         <section class="card">
+         </div>
+         <div class="card">
             <div class="card-header info">
-               <i class='bx bx-shape-triangle'></i>
-               <p class="card-header-title">Triangulo</p>
+               <span>
+                  <i class='bx bx-shape-triangle'></i>
+                  Triangulo
+               </span>
             </div>
             <form action="#" method="post" accept-charset="utf-8">
                <label for="lado1">Ingresa el lado 1</label>
@@ -162,11 +224,13 @@
                <h3>Perímetro: <span id="perimetroTriangulo" class="results-value"></span></h3>
                <h3>Area: <span id="areaTriangulo" class="results-value"></span></h3>
             </div>
-         </section>
-         <section class="card">
+         </div>
+         <div class="card">
             <div class="card-header success">
-               <i class='bx bx-circle'></i>
-               <p class="card-header-title">Círculo</p>
+               <span>
+                  <i class='bx bx-circle'></i>
+                  Círculo
+               </span>
             </div>
             <form action="#" method="post" accept-charset="utf-8">
                <label for="radio">Ingresa el radio</label>
@@ -177,8 +241,8 @@
                <h3>Perímetro: <span id="perimetroCirculo" class="results-value"></span></h3>
                <h3>Area: <span id="areaCirculo" class="results-value"></span></h3>
             </div>
-         </section>
-      </div>
+         </div>
+      </section>
    </main>
    <footer></footer>
    <script src="./js/app.js"></script>
