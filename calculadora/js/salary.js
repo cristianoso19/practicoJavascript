@@ -11,9 +11,12 @@ function calcularSalarios() {
       }
    );
    const medianaGeneral = medianaSalario(salariosColSorted);
-   console.log(medianaGeneral);
    const medianaTop10 = medianaTop(salariosColSorted);
-   console.log(medianaTop10);
+   const sMediana = document.getElementById("mediana-salarios");
+   const sTop = document.getElementById("mediana-top");
+
+   sMediana.textContent = medianaGeneral;
+   sTop.textContent = medianaTop10;
 
 }
 
@@ -21,7 +24,6 @@ function medianaTop(lista) {
    const top10 = parseInt(lista.length - (lista.length * 0.9));
    const topInicio = lista.length - top10;
    const topFin = lista.length - 1;
-   console.log(topInicio, topFin);
    const listaTop = lista.splice(topInicio, topFin);
    const medianaTop = medianaSalario(listaTop);
    return medianaTop;
